@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PHONE_BOOK_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T_PHONE_BOOK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="30" />
+          <Property Name="SURNAME" Type="nvarchar" MaxLength="30" />
+          <Property Name="ID_PHONE_TYPE" Type="int" />
+          <Property Name="DELETED_DATE" Type="datetime" />
+          <Property Name="MODIFIED_DATE" Type="datetime" />
+          <Property Name="INSERTED_DATE" Type="datetime" />
+          <Property Name="NUMBER" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="T_PHONE_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TYPE" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_T_PHONE_BOOK_T_PHONE_TYPE">
+          <End Role="T_PHONE_TYPE" Type="Self.T_PHONE_TYPE" Multiplicity="0..1" />
+          <End Role="T_PHONE_BOOK" Type="Self.T_PHONE_BOOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_PHONE_TYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="T_PHONE_BOOK">
+              <PropertyRef Name="ID_PHONE_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="P_INSERT_PHONE_BOOK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="SURNAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="ID_PHONE_TYPE" Type="int" Mode="In" />
+          <Parameter Name="DELETED_DATE" Type="datetime" Mode="In" />
+          <Parameter Name="MODIFIED_DATE" Type="datetime" Mode="In" />
+          <Parameter Name="INSERTED_DATE" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="PHONE_BOOK_DBModelStoreContainer">
+          <EntitySet Name="T_PHONE_BOOK" EntityType="Self.T_PHONE_BOOK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_PHONE_TYPE" EntityType="Self.T_PHONE_TYPE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_T_PHONE_BOOK_T_PHONE_TYPE" Association="Self.FK_T_PHONE_BOOK_T_PHONE_TYPE">
+            <End Role="T_PHONE_TYPE" EntitySet="T_PHONE_TYPE" />
+            <End Role="T_PHONE_BOOK" EntitySet="T_PHONE_BOOK" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PHONE_BOOK_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="T_PHONE_BOOK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SURNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ID_PHONE_TYPE" Type="Int32" />
+          <Property Name="DELETED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="MODIFIED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="INSERTED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_PHONE_TYPE" Relationship="Self.FK_T_PHONE_BOOK_T_PHONE_TYPE" FromRole="T_PHONE_BOOK" ToRole="T_PHONE_TYPE" />
+        </EntityType>
+        <EntityType Name="T_PHONE_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="T_PHONE_BOOK" Relationship="Self.FK_T_PHONE_BOOK_T_PHONE_TYPE" FromRole="T_PHONE_TYPE" ToRole="T_PHONE_BOOK" />
+        </EntityType>
+        <Association Name="FK_T_PHONE_BOOK_T_PHONE_TYPE">
+          <End Role="T_PHONE_TYPE" Type="Self.T_PHONE_TYPE" Multiplicity="0..1" />
+          <End Role="T_PHONE_BOOK" Type="Self.T_PHONE_BOOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_PHONE_TYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="T_PHONE_BOOK">
+              <PropertyRef Name="ID_PHONE_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PHONE_BOOK_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_PHONE_BOOK" EntityType="Self.T_PHONE_BOOK" />
+          <EntitySet Name="T_PHONE_TYPE" EntityType="Self.T_PHONE_TYPE" />
+          <AssociationSet Name="FK_T_PHONE_BOOK_T_PHONE_TYPE" Association="Self.FK_T_PHONE_BOOK_T_PHONE_TYPE">
+            <End Role="T_PHONE_TYPE" EntitySet="T_PHONE_TYPE" />
+            <End Role="T_PHONE_BOOK" EntitySet="T_PHONE_BOOK" />
+          </AssociationSet>
+          <FunctionImport Name="P_INSERT_PHONE_BOOK">
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="SURNAME" Mode="In" Type="String" />
+            <Parameter Name="ID_PHONE_TYPE" Mode="In" Type="Int32" />
+            <Parameter Name="DELETED_DATE" Mode="In" Type="DateTime" />
+            <Parameter Name="MODIFIED_DATE" Mode="In" Type="DateTime" />
+            <Parameter Name="INSERTED_DATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PHONE_BOOK_DBModelStoreContainer" CdmEntityContainer="PHONE_BOOK_DBEntities">
+          <EntitySetMapping Name="T_PHONE_BOOK">
+            <EntityTypeMapping TypeName="PHONE_BOOK_DBModel.T_PHONE_BOOK">
+              <MappingFragment StoreEntitySet="T_PHONE_BOOK">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="ID_PHONE_TYPE" ColumnName="ID_PHONE_TYPE" />
+                <ScalarProperty Name="DELETED_DATE" ColumnName="DELETED_DATE" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+                <ScalarProperty Name="INSERTED_DATE" ColumnName="INSERTED_DATE" />
+                <ScalarProperty Name="NUMBER" ColumnName="NUMBER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_PHONE_TYPE">
+            <EntityTypeMapping TypeName="PHONE_BOOK_DBModel.T_PHONE_TYPE">
+              <MappingFragment StoreEntitySet="T_PHONE_TYPE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="P_INSERT_PHONE_BOOK" FunctionName="PHONE_BOOK_DBModel.Store.P_INSERT_PHONE_BOOK" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

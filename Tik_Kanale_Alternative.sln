@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1169
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tik_Kanale_Alternative", "Tik_Kanale_Alternative\Tik_Kanale_Alternative.csproj", "{91D21DA2-EDCD-45BA-A2A8-3BF06852614B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phone_Book_DB", "Phone_Book_DB\Phone_Book_DB.csproj", "{BC651A0A-F9EF-405B-AE15-46FB70BF49E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{91D21DA2-EDCD-45BA-A2A8-3BF06852614B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91D21DA2-EDCD-45BA-A2A8-3BF06852614B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91D21DA2-EDCD-45BA-A2A8-3BF06852614B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC651A0A-F9EF-405B-AE15-46FB70BF49E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC651A0A-F9EF-405B-AE15-46FB70BF49E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC651A0A-F9EF-405B-AE15-46FB70BF49E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC651A0A-F9EF-405B-AE15-46FB70BF49E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
