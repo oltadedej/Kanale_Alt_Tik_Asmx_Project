@@ -15,7 +15,7 @@ namespace Tik_Kanale_Alternative
     // [System.Web.Script.Services.ScriptService]
     public class PhoneBookService : System.Web.Services.WebService
     {
-        // Makina a = new Makina();
+        
 
         public readonly PhoneBookServicesDb serviceDb = new PhoneBookServicesDb();
 
